@@ -1,13 +1,13 @@
 import { makeProject } from '@motion-canvas/core';
 
-import shader001 from './scenes/shader001?scene';
-import shader002 from './scenes/shader002?scene';
-import shader003 from './scenes/shader003?scene';
-import shader004 from './scenes/shader004?scene';
-import shader005 from './scenes/shader005?scene';
+import scene001 from './scenes/scene001?scene';
+import scene002 from './scenes/scene002?scene';
+import scene003 from './scenes/scene003?scene';
+import scene004 from './scenes/scene004?scene';
+import scene005 from './scenes/scene005?scene';
 
 export default makeProject({
-	scenes: [shader001, shader002, shader003, shader004, shader005],
+	scenes: [scene001, scene002, scene003, scene004, scene005],
 	name: 'shaders',
 	experimentalFeatures: true,
 });
