@@ -12,15 +12,19 @@ vec3 palette(in float t)
     return a + b * cos(6.28318 * (c * t + d));
 }
 
+uniform float iTime;
+
 // kudos to @kishimisu https://www.youtube.com/watch?v=f4s1h2YETNY&ab_channel=kishimisu
 void main()
 {
+    float _time = time - iTime;
+    
     vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.y;
     uv.y /= -2.0;
     vec2 uv0 = uv;
     //uv.x = fragCoord.x / iResolution.y * 2.0;
     
-    float t = time - floor(time);
+    float t = _time - floor(_time);
     //t = 0.0;
     
     uv = fract(uv * 2.0) - 0.5;

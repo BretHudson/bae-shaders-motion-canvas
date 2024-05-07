@@ -25,8 +25,12 @@ float antialias(in float d)
 
 float circles = 6.0;
 
+uniform float iTime;
+
 void main()
 {
+    float _time = time - iTime;
+    
     // Normalized pixel coordinates (from 0 to 1)
     vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.x;
     uv.y *= -1.0;
@@ -39,7 +43,7 @@ void main()
     uv.y += ooo;
     for (float i = -circles; i < circles; i += 1.0)
     {
-        float curStep = round((uv.x + time) / 2.0) - time / 2.0;
+        float curStep = round((uv.x + _time) / 2.0) - _time / 2.0;
         float xOffset = -curStep * 2.0;
         float yOffset = -abs(curStep) * abs(curStep) * 0.1;
         //yOffset = 0.0;
@@ -49,7 +53,7 @@ void main()
     }
 
     // Time varying pixel color
-    vec3 col = palette(round((uv.x + time) / 2.0));
+    vec3 col = palette(round((uv.x + _time) / 2.0));
     col *= antialias(d);
 
     // Output to screen

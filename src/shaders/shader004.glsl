@@ -52,9 +52,12 @@ float lerp(in float a, in float b, in float t)
     return a * (1.0 - t) + b * t;
 }
 
+uniform float iTime;
+
 float renderShapeAnim(in vec2 pos, in float size, in float rotation, in float tOffset)
 {
-    float t = (time + tOffset);
+    float _time = time - iTime;
+    float t = (_time + tOffset);
     
     float edgeR = 0.0;
     float pulse = sin(t) * 0.5 + 0.5;

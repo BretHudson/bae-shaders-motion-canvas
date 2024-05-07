@@ -12,15 +12,19 @@ vec3 palette(in float t)
     return a + b * cos(6.28318 * (c * t + d));
 }
 
+uniform float iTime;
+
 // kudos to @kishimisu https://www.youtube.com/watch?v=f4s1h2YETNY&ab_channel=kishimisu
 void main()
 {
+    float _time = time - iTime;
+    
 	// Normalized pixel coordinates (from 0 to 1)
     vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.y;
     uv.y *= -1.0;
     uv *= 4.5;
     
-    float t = time - floor(time);
+    float t = _time - floor(_time);
     float d = distance(uv - vec2(t, 0), vec2(round(uv.x - t), 0));//round(length(uv.x) - floor(uv.x));
     d *= 0.1;
     d -= 0.1 * cos(abs(uv.x) / 4.0);
@@ -31,7 +35,7 @@ void main()
     float cycles = 16.0;
     
     float palettePercent = round(percent * cycles) / cycles;
-    float paletteT = palettePercent - time * 0.1;
+    float paletteT = palettePercent - _time * 0.1;
     
     float alpha = sin(round(percent * cycles) / 3.14 * cycles * 8.0) * 0.35 + 0.65;
     vec3 col = palette(paletteT) * d * alpha;
