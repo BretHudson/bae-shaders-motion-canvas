@@ -1,8 +1,8 @@
 import { makeProject } from '@motion-canvas/core';
 
-import example from './scenes/example?scene';
+import shader001 from './scenes/shader001?scene';
 
 export default makeProject({
-	scenes: [example],
+	scenes: [shader001],
 	experimentalFeatures: true,
 });
