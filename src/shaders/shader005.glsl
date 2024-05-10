@@ -30,6 +30,9 @@ void main()
     vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.x;
     uv.y *= -1.0;
     vec2 uv0 = uv;
+    
+    //uv0 *= 0.5625;
+    uv0 *= 0.65;
 
     float d1 = 1.0;
     float d2 = 1.0;
@@ -41,6 +44,10 @@ void main()
     float circleCount = 17.0;
     
     float t = mod(_time, 1.0);
+    
+    float a = -3.14159 / 2.;
+    
+    uv0 *= mat2(cos(a), -sin(a), sin(a), cos(a));
     
     // Red parabola (U)
     float halfCount = floor(circleCount / 2.0);

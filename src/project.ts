@@ -10,12 +10,12 @@ import scene007 from './scenes/scene007?scene';
 
 export default makeProject({
 	scenes: [
-		scene001,
-		scene002,
-		scene003,
-		scene004,
-		scene005,
-		scene006,
+		// scene001,
+		// scene002,
+		// scene003,
+		// scene004,
+		// scene005,
+		// scene006,
 		scene007,
 	],
 	name: 'shaders',

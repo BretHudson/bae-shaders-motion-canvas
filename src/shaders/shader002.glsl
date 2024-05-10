@@ -22,33 +22,20 @@ void main()
     vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.y;
     uv.y /= -2.0;
     vec2 uv0 = uv;
-    //uv.x = fragCoord.x / iResolution.y * 2.0;
     
-    float t = _time - floor(_time);
-    //t = 0.0;
+    float eggs = 12.;
+    float t = mod(_time, eggs);
     
     uv = fract(uv * 2.0) - 0.5;
     uv.x += t;
     uv.x = fract(uv.x + 0.5) - 0.5;
     uv.y = uv0.y * 1.0 - abs(uv0.y * 3.5);
-    //uv.y = 2.0;
-    //uv.y *= 2.0;
-    //vec2 _uv = uv;
-    //uv.y = uv.y * 2.0;
-    //uv.y = _uv.y * 6.0;
-    //uv.x = abs(1.0 - (uv.x * 2.0));
-    //uv.x = sin(uv.x * 3.14159);
-    
-    //outColor = vec4(abs(uv.x), 0.0, 0.0, 1.0);
-    //return;
     
     float d = length(uv);
     d -= 0.2;
-    //d = smoothstep(0.1, 0.11, d);
     d = 1.0 - smoothstep(0.1, 0.11, d);
     
-    vec3 col = palette(round(uv0.x + t * 0.5)) * d;
+    vec3 col = palette(mod(round(uv0.x + t * 0.5), 0.5 * eggs)) * d;
     
-    // Output to screen
     outColor = vec4(col, 1.0);
 }

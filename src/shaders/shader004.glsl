@@ -76,11 +76,19 @@ float renderShapeAnim(in vec2 pos, in float size, in float rotation, in float tO
 void main()
 {
     // Normalized pixel coordinates (from 0 to 1)
-    vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.x;
+    vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.y;
     uv.y *= -1.0;
     vec2 uv0 = uv;
     
+    //uv *= 0.95;
+    
     float d = renderShapeAnim(uv, 0.3, 0.0, 0.0);
+    d = max(d, renderShapeAnim(uv + 1. / 1.75, 0.3, 0.0, 0.0));
+    d = max(d, renderShapeAnim(uv - 1. / 1.75, 0.3, 0.0, 0.0));
+    d = max(d, renderShapeAnim(uv + 1. / 1.75 * vec2(-1., 1), 0.3, 0.0, 0.0));
+    d = max(d, renderShapeAnim(uv + 1. / 1.75 * vec2(1., -1), 0.3, 0.0, 0.0));
+    d = max(d, renderShapeAnim(uv + 1. / 1.75 * vec2(-2., 0), 0.3, 0.0, 0.0));
+    d = max(d, renderShapeAnim(uv + 1. / 1.75 * vec2(2, 0), 0.3, 0.0, 0.0));
     
     for (float i = 1.0; i < 5.0; i++)
     {

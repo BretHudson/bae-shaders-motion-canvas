@@ -5,8 +5,8 @@ export const createShaderView = (shader: string, duration: number) => {
 	return function* (view: View2D) {
 		view.add(
 			<Rect
-				width={960}
-				height={540}
+				width={1080}
+				height={1920}
 				fill={'magenta'}
 				shaders={{
 					fragment: shader,

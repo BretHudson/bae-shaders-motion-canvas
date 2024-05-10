@@ -34,6 +34,7 @@ void main()
     // Normalized pixel coordinates (from 0 to 1)
     vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.x;
     uv.y *= -1.0;
+    uv *= 1.13;
     
     uv *= circles;
     
@@ -53,7 +54,7 @@ void main()
     }
 
     // Time varying pixel color
-    vec3 col = palette(round((uv.x + _time) / 2.0));
+    vec3 col = palette(mod(round((uv.x + _time) / 2.0), 8.0));
     col *= antialias(d);
 
     // Output to screen

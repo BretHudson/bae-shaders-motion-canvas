@@ -23,6 +23,7 @@ void main()
     vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.y;
     uv.y *= -1.0;
     uv *= 4.5;
+    uv *= 1.5;
     
     float t = _time - floor(_time);
     float d = distance(uv - vec2(t, 0), vec2(round(uv.x - t), 0));//round(length(uv.x) - floor(uv.x));

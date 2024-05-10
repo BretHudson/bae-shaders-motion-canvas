@@ -67,8 +67,14 @@ float renderShapeAnim(in vec2 pos, in float size, in float rotation, in float tO
 void main()
 {
     // Normalized pixel coordinates (from 0 to 1)
-    vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.x;
+    vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.y;
     vec2 uv0 = uv;
+	
+	float a = 3.14159 / 2.;
+	uv *= mat2(cos(a), -sin(a), sin(a), cos(a));
+    
+    //uv *= 0.5625;
+	//uv *= 0.9;
     
     vec3 color = vec3(0., 0., .2);
     vec3 colorMask = vec3(1., .1, .7);

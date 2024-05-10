@@ -32,11 +32,12 @@ void main()
 {
     float _time = time - iTime;
     
-    vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.y;
+    vec2 uv = (sourceUV * resolution.xy * 2.0 - resolution.xy) / resolution.x;
     
     uv *= 1.5;
     
     uv += .5;
+    uv.x -= 1.0;
     
     float startTime = 35.9;
     float _iTime = _time + startTime;
