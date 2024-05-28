@@ -8,6 +8,7 @@ import scene005 from './scenes/scene005?scene';
 import scene006 from './scenes/scene006?scene';
 import scene007 from './scenes/scene007?scene';
 import scene008 from './scenes/scene008?scene';
+import scene009 from './scenes/scene009?scene';
 
 export default makeProject({
 	scenes: [
@@ -18,7 +19,8 @@ export default makeProject({
 		// scene005,
 		// scene006,
 		// scene007,
-		scene008,
+		// scene008,
+		scene009,
 	],
 	name: 'shaders',
 	experimentalFeatures: true,
